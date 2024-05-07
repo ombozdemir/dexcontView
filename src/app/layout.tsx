@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import { nunito } from "./ui/fonts";
+
+import TopNav from "@/components/ui/dashboard/top-nav";
+import Header from "@/components/ui/dashboard/header";
+
+import { ThemeProvider } from "next-themes";
+
+import "./globals.css";
+import "../../node_modules/react-grid-layout/css/styles.css";
+import "../../node_modules/react-resizable/css/styles.css";
 
 export const metadata: Metadata = {
   title: "dexcont",
@@ -15,8 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${nunito.className} antialiased`}>
+        <ThemeProvider enableSystem={true} attribute="class">
+          <TopNav />
+          <Header />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
