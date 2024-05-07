@@ -22,13 +22,13 @@ export default function MyFirstGrid() {
       breakpoints={{ lg: 1800, md: 996, sm: 768, xs: 480, xxs: 0 }}
       cols={{ lg: 4, md: 4, sm: 1, xs: 1, xxs: 1 }}
       preventCollision={false}
-      rowHeight={50}
+      rowHeight={65}
     >
-      <div key="a" className="item border"><MarketOverview /></div>
-      <div key="b" className="item border"><TradingViewWidget /></div>
-      <div key="c" className="item border"><MiniChartView /></div>
-      <div key="d" className="item"><TickerTape /></div>
-      <div key="e" className="item"><CryptoHeatmap /></div>
+      <div key="a" className="item border p-2 bg-white dark:bg-cyan-600"><MarketOverview /></div>
+      <div key="b" className="item border p-2 bg-white dark:bg-stone-600"><TradingViewWidget /></div>
+      <div key="c" className="item border p-2 bg-white dark:bg-stone-600"><MiniChartView /></div>
+      <div key="d" className="item border p-2 bg-white dark:bg-stone-600"><TickerTape /></div>
+      <div key="e" className="item border p-2 bg-white dark:bg-stone-600"><CryptoHeatmap /></div>
     </ResponsiveGridLayout >
   );
 }

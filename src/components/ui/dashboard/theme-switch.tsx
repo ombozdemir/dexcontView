@@ -11,7 +11,7 @@ export function ThemeSwitch() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="px-3 me-2 rounded-full dark:hover:bg-slate-200">
+    <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="px-3 me-2 rounded-full dark:hover:bg-slate-200 ms-auto">
       {theme === "dark" ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}
     </Button>
   )

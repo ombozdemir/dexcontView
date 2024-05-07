@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${nunito.className} antialiased`}>
         <ThemeProvider enableSystem={true} attribute="class">
-          <TopNav />
+          {/*<TopNav />*/}
           <Header />
           {children}
         </ThemeProvider>
