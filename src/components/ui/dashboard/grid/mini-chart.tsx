@@ -1,30 +1,30 @@
 "use client"
 import React, { useEffect, useRef, memo } from 'react';
+import { useTheme } from 'next-themes';
 
 function MiniChartView() {
   const container = useRef();
 
-  useEffect(
-    () => {
-      const script = document.createElement("script");
-      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-      script.type = "text/javascript";
-      script.async = true;
-      script.innerHTML = `
-        {
-          "symbol": "BITSTAMP:BTCUSD",
-          "autosize": true,
-          "locale": "en",
-          "dateRange": "1D",
-          "theme": "light",
-          "isTransparent": false,
-          "autosize": false,
-          "largeChartUrl": ""
-        }`;
-      container.current.appendChild(script);
-    },
-    []
-  );
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.type = "text/javascript";
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbol: "BITSTAMP:BTCUSD",
+      autosize: true,
+      locale: "en",
+      dateRange: "1D",
+      theme: theme === 'light' ? 'light' : 'dark', // Dynamically set theme
+      isTransparent: false,
+      largeChartUrl: ""
+    });
+    container.current.innerHTML = ''; // Clear previous content
+    container.current.appendChild(script);
+  }, [theme]);
+
 
   return (
     <div className="tradingview-widget-container" ref={container} style={{ height: "100%", width: "100%" }}>
